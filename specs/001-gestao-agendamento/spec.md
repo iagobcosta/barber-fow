@@ -8,6 +8,13 @@
 
 **Input**: User description: "Agendamento"
 
+## Clarifications
+
+### Session 2026-08-06
+
+- Q: Does this iteration exclude direct customer self-booking and focus only on staff-operated scheduling? → A: usuário sugere, staff confirma
+- Q: Should payment processing and audit-ready split calculation be excluded from this feature's scope? → A: B
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Agendar serviços sem conflito (Priority: P1)
@@ -66,6 +73,29 @@ validando que o atendimento agendado mantém prioridade e horários respeitados.
 
 ---
 
+### User Story 4 - Experiência visual premium e landing page pública (Priority: P2)
+
+Como proprietário e visitante, quero uma interface visual sofisticada e uma landing page pública que
+apresente a marca claramente, para reforçar a percepção premium do negócio e converter interessados em
+clientes.
+
+**Why this priority**: A experiência visual e a presença pública são fundamentais para a percepção de
+marca, reputação e atração de novos clientes.
+
+**Independent Test**: Pode ser testado abrindo a landing page e os fluxos de agendamento na interface,
+validando que a identidade visual, os pilares de negócio e as páginas principais aparecem com consistência
+visual e responsividade.
+
+**Acceptance Scenarios**:
+
+1. **Given** um visitante acessando a landing page pública, **When** ele abre a home, **Then** ele vê uma
+   apresentação clara dos pilares Beauty Salon, Barbershop e Bar com linguagem premium e visual consistente.
+2. **Given** um usuário navegando pelos fluxos de agendamento, **When** ele acessa o cliente ou a equipe,
+   **Then** a interface exibe estilo visual premium, hierarquia clara, tipografia refinada e componentes
+   consistentes em desktop e mobile.
+
+---
+
 ### Edge Cases
 
 - O que acontece quando um profissional fica indisponível após já possuir agenda confirmada?
@@ -97,6 +127,15 @@ validando que o atendimento agendado mantém prioridade e horários respeitados.
   conflito e histórico de alterações.
 - **FR-010**: O sistema MUST disponibilizar visão diária consolidada da ocupação por profissional e
   por tipo de atendimento (agendado/chegada).
+- **FR-011**: O sistema MUST tratar as solicitações de agendamento como sugestões do cliente e exigir
+  confirmação final pela recepção ou gerência antes da reserva ser considerada confirmada.
+- **FR-012**: O sistema MUST disponibilizar uma landing page pública com apresentação clara dos pilares
+  Beauty Salon, Barbershop e Bar, incluindo mensagem de posicionamento e chamadas para ação.
+- **FR-013**: O sistema MUST oferecer uma identidade visual premium e coesa para os fluxos públicos e
+  operacionais, com tipografia refinada, paleta consistente, espaçamentos elegantes e componentes
+  responsivos em desktop e mobile.
+- **FR-014**: O sistema MUST garantir que a experiência visual do frontend preserve consistência entre a
+  landing page, o fluxo de agendamento do cliente e o painel da equipe.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -124,12 +163,20 @@ validando que o atendimento agendado mantém prioridade e horários respeitados.
 - **SC-004**: Pelo menos 95% dos eventos de no-show e cancelamento tardio ficam registrados com
   rastreabilidade completa no mesmo dia da ocorrência.
 - **SC-005**: Taxa de conflitos de agenda detectados após confirmação fica abaixo de 1% por mês.
+- **SC-006**: Pelo menos 90% das páginas públicas e dos fluxos operacionais devem apresentar uma experiência
+  visual consistente, responsiva e alinhada à identidade premium definida.
+- **SC-007**: A landing page pública deve ser capaz de comunicar claramente os três pilares de negócio em até
+  5 segundos de leitura para um visitante novo.
 
 ## Assumptions
 
 - O escopo desta feature cobre a operação presencial da unidade única da barbearia/salão.
 - A feature será usada por recepção/gerência e não inclui autoagendamento direto pelo cliente final
   nesta primeira versão.
+- As solicitações de clientes são tratadas como sugestões de horário/serviço, com confirmação final feita
+  pela equipe antes da reserva ser selada.
+- O processamento de pagamentos e o cálculo/rateio de comissões auditáveis ficam fora do escopo desta
+  entrega, sendo tratados por integração com o domínio financeiro separado.
 - Os 8 profissionais parceiros já possuem cadastro ativo e elegibilidade básica de serviços.
 - Regras comerciais detalhadas para penalidade de no-show serão parametrizadas pela gerência no
   processo operacional vigente.

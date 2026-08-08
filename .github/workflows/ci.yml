@@ -55,10 +55,13 @@ jobs:
           cd frontend
           npm run build
 
+      - name: Install Python markdown dependency
+        run: |
+          python -m pip install --user markdown
+
       - name: Check spec files for valid Markdown
         run: |
           python - <<'PY'
-          import os
           import glob
           import markdown
           fail = False
